@@ -17,6 +17,7 @@ public class Opdracht2_2 extends Applet {
         g.drawString("Anwar", 50, 60 );
         g.setColor(Color.red);
         g.drawString("Ammor", 50, 80 );
+        
     }
 
 }
