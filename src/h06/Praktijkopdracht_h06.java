@@ -12,11 +12,9 @@ public class Praktijkopdracht_h06 extends Applet {
     int gemiddelde;
     //andere double gemaakt omdat ik dat makkelijker vond.
     double uitkomstDouble, antwoordDouble;
-    int test2;
 
 
     public void init() {
-        test2 = 0;
         cijfer1 = 5.9;
         cijfer2 = 6.3;
         cijfer3 = 6.9;
