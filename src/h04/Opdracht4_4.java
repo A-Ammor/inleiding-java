@@ -5,7 +5,14 @@ import java.applet.*;
 
 public class Opdracht4_4 extends Applet {
 
+    int valerie;
+    int jeroen;
+    int hans;
+
     public void init() {
+        valerie = 40;
+        jeroen = 100;
+        hans = 80;
     }
 
     public void paint(Graphics g) {
