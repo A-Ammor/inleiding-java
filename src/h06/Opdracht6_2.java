@@ -14,9 +14,9 @@ public class Opdracht6_2 extends Applet {
         dag = 24;
         jaar = 24 * 365;
         secondenInEenMinuut= 60;
-        uitkomstuur = (uur * secondenInEenMinuut * secondenInEenMinuut);
-        uitkomstdag = (dag * secondenInEenMinuut * secondenInEenMinuut);
-        uitkomstjaar = (jaar * secondenInEenMinuut);
+        uitkomstuur = uur * secondenInEenMinuut * secondenInEenMinuut;
+        uitkomstdag = dag * secondenInEenMinuut * secondenInEenMinuut;
+        uitkomstjaar = jaar * (secondenInEenMinuut * secondenInEenMinuut);
     }
 
     public void paint(Graphics g) {
