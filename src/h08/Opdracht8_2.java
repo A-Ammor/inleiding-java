@@ -4,6 +4,7 @@ import java.awt.*;
 import java.applet.*;
 import java.awt.event.*;
 
+
 public class Opdracht8_2 extends Applet {
     Button knopTest;
     int aantalMannen;
@@ -12,8 +13,6 @@ public class Opdracht8_2 extends Applet {
     int mannanleerlingen;
     int vrouwenleerlingen;
     int clickedall;
-
-
 
     public void init() {
 
