@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Opdracht10_5 extends Applet{
-    double gem1, gem2, newc, cijfer;
+    double gem1, gem2, newcijfer, cijfer;
     Button knop1;
     Button knop2;
     TextField vak1;
@@ -16,7 +16,7 @@ public class Opdracht10_5 extends Applet{
         vak1 = new TextField("",10);
         knop2 = new Button("reset");
         gem1 = 0;
-        newc = 0;
+        newcijfer = 0;
         cijfer = 0;
         Listen1 nc = new Listen1(); //Add a new number
         Listen2 re = new Listen2(); //Reset
@@ -51,14 +51,14 @@ public class Opdracht10_5 extends Applet{
         }
 
 
-        g.drawString("uw gemiddelde is: "+(String.format("%.2f", Double.valueOf(gem2))), 100, 150);
+        g.drawString("uw gemiddelde is: " + (String.format("%.2f", Double.valueOf(gem2))), 100, 150);
     }
 
     class Listen1 implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            newc = Double.parseDouble(vak1.getText());
+            newcijfer = Double.parseDouble(vak1.getText());
             gem1++;
-            cijfer = cijfer + newc;
+            cijfer = cijfer + newcijfer;
             gem2 = cijfer/gem1;
             repaint();
         }
@@ -66,7 +66,7 @@ public class Opdracht10_5 extends Applet{
 
     class Listen2 implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            newc = 0;
+            newcijfer = 0;
             gem1 = 0;
             gem2 = 0;
             cijfer = 0;
