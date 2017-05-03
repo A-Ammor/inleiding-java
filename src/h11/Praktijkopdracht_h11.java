@@ -11,16 +11,23 @@ public class Praktijkopdracht_h11 extends Applet {
     int tafel;
     TextField tekstvak;
     Label label;
+    Button knop;
+    String s;
 
     public void init() {
-        setSize(500, 500);
+        setSize(500, 300);
         tafel = 0;
-        label = new Label("typ hier uw getal en druk op enter");
-        tekstvak = new TextField(2);
+        label = new Label("Typ hier uw getal en druk op enter");
+        tekstvak = new TextField(8);
         Listen1 l1 = new Listen1();
         tekstvak.addActionListener(l1);
         add (label);
         add(tekstvak);
+
+        knop = new Button();
+        knop.setLabel( "Ok" );
+        knop.addActionListener( l1 );
+        add(knop);
     }
 
     public void paint(Graphics g) {
