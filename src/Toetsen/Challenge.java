@@ -15,7 +15,7 @@ public class Challenge extends Applet {
             y += 20;
             if (teller == 5) {
                 g.drawString("we zijn op de helft", 35, y);
-            }else {
+            }else{
                 g.drawString("Dit is regel: " + teller, 35, y);
             }
         }
