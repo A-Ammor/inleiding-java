@@ -33,7 +33,6 @@ public class Opdracht12_3 extends Applet {
     class KnopListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
 
-
             for (int i = 0; i < textfield.length; i++) {
                 getallen[i] = Integer.parseInt(textfield[i].getText());
             }

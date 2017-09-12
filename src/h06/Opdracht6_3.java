@@ -21,6 +21,7 @@ public class Opdracht6_3 extends Applet {
         uitkomst--;
         uitkomst--;
         uitkomst--;
+
         g.drawString("Positieve waarden word nu een negatief getal: " + uitkomst, 20, 20);
     }
 }
