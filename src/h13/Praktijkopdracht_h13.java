@@ -12,11 +12,11 @@ import java.awt.event.ActionListener;
 public class Praktijkopdracht_h13 extends Applet {
 
     int count;
-    int x = 80;
-    int x1 = 53;
-    int y1 = 45;
-    int y = 120;
-    int buttonPresses = 0;
+    int x;
+    int x1;
+    int y1;
+    int y;
+    int buttonPresses;
     Button bomen;
     boolean bomenButton = false;
 
@@ -62,9 +62,8 @@ public class Praktijkopdracht_h13 extends Applet {
     public void paint(Graphics g) {
         if (bomenButton == true) {
             berekening(g);
-            g.drawString("Je hebt de knop " + buttonPresses + " keer ingedrukt, telkens genereert dit nieuwe bomen! ", 75, 450);
-
         }
+        g.drawString("Je hebt de knop " + buttonPresses + " keer ingedrukt, telkens genereert dit nieuwe bomen! ", 75, 450);
     }
 
     public void boom(Graphics g) {
