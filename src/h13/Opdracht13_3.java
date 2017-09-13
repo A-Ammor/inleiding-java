@@ -58,7 +58,6 @@ public class Opdracht13_3 extends Applet {
                 int x = startX + (col * (width + spacing));
                 g.setColor(Color.RED);
                 g.fillRect(x, y, width, height);
-
             }
         }
     }
