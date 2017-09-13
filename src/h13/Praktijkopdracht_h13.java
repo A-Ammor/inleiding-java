@@ -12,10 +12,10 @@ import java.awt.event.ActionListener;
 public class Praktijkopdracht_h13 extends Applet {
 
     int count;
+    int y;
     int x;
     int x1;
     int y1;
-    int y;
     int buttonPresses;
     Button bomen;
     boolean bomenButton = false;
