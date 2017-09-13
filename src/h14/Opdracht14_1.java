@@ -13,20 +13,20 @@ public class Opdracht14_1 extends Applet {
     Button knop;
     boolean randomize; // kan randomize ook weghalen en dan de formule in actionlistener zetten.
     String[] cijfer = {"aas", "twee", "drie", "vier", "vijf", "zes", "zeven", "acht", "negen", "tien", "Boer", "Konining", "Koning"};
-    String[] kleur = {"Klaver", "Ruite", "Harte", "Schoppen"};
+    String[] kleur = {"Klaver", "Ruiten", "Harte", "Schoppen"};
     String kaartKleur = "";
     String kaartCijfer = "";
 
+
+    public void berekening() {
+        kaartKleur = kleur[(int) (Math.random() * kleur.length)];
+        kaartCijfer = cijfer[(int) (Math.random() * cijfer.length)];
+    }
 
     public void paint(Graphics g) {
         if (randomize == true) {
             g.drawString("" + kaartKleur + " " + kaartCijfer , 50,60);
         }
-    }
-
-    public void berekening() {
-        kaartKleur = kleur[(int) (Math.random() * kleur.length)];
-        kaartCijfer = cijfer[(int) (Math.random() * cijfer.length)];
     }
 
     public void init(){
