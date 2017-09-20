@@ -21,6 +21,8 @@ public class Praktijkopdracht_h13 extends Applet {
     boolean bomenButton = false;
 
     public void berekening(Graphics g) {
+
+        //g.setColor(new Color(R 60, G 60, B 0));
         while (count < 10) {
             boom(g);
             count++;
