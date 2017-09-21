@@ -44,7 +44,7 @@ public class Praktijkopdracht_h14 extends Applet {
         sound = getAudioClip(pad, "laugh.wav");
         reset = getAudioClip(pad, "reset.wav");
         victory = getAudioClip(pad, "victory.wav");
-        //loseMusic = getAudioClip(pad, "loseMusic.wav");
+        loseMusic = getAudioClip(pad, "loseMusic.wav");
         textfield();
 
         Button resetButton = new Button("Reset");
@@ -83,7 +83,14 @@ public class Praktijkopdracht_h14 extends Applet {
             int y = 75;
 
             for (int i = 1; i <= stenen; i++) {
-                g.drawImage(smileyWin, x, y, 50, 50, this);
+
+                if (stenen == 1 || stenen == 5 || stenen == 9 || stenen == 13 || stenen == 17 || stenen == 21) {
+                    g.drawImage(smileyWin, x, y, 50, 50, this);
+
+                } else {
+                    g.drawImage(smileyLose, x, y, 50, 50, this);
+
+                }
                 x += 75;
                 if (i % 4 == 0) {
                     x = 50;
@@ -176,12 +183,22 @@ public class Praktijkopdracht_h14 extends Applet {
     public void gewonnen() {
         getGraphics().drawString("U heeft gewonnen", 300, 350);
         getGraphics().drawImage(aiLose, 150, 100, 200, 200, this);
+        if (stenen >= 22) {
+            tekstvak.setVisible(true);
+        } else {
+            tekstvak.setVisible(false);
+        }
         victory.play();
     }
 
     public void verloren() {
         getGraphics().drawString("U heeft verloren", 300, 350);
         getGraphics().drawImage(playerLose, 150, 100, 200, 200, this);
+        if (stenen >= 22) {
+            tekstvak.setVisible(true);
+        } else {
+            tekstvak.setVisible(false);
+        }
         sound.play();
         //loseMusic.play();
     }
