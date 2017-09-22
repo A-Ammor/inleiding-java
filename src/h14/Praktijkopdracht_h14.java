@@ -21,18 +21,16 @@ public class Praktijkopdracht_h14 extends Applet {
     private AudioClip reset;
     private AudioClip loseMusic;
     private AudioClip victory;
+    //private AudioClip startSong;
     TextField tekstvak;
     int stenen = 23;
     int invoer;
-    boolean beurten;
+    boolean beurten = false;
     int computerAantal = 0;
     boolean einde = false;
     boolean error;
     String resetTekst;
     int x = 275;
-
-
-    // miss later maken als ik verloren of gewonnen heb, dan gaat de tekst (1-3) en textfield weg. en dan alleen een button met die end screen.
 
     public void init() {
         setSize(500, 430);
@@ -45,11 +43,54 @@ public class Praktijkopdracht_h14 extends Applet {
         reset = getAudioClip(pad, "reset.wav");
         victory = getAudioClip(pad, "victory.wav");
         loseMusic = getAudioClip(pad, "loseMusic.wav");
+        //startSong = getAudioClip(pad, "startSong.wav");
         textfield();
 
         Button resetButton = new Button("Reset");
         add(resetButton);
         resetButton.addActionListener(new ResetButtonActionListener());
+    }
+
+    public void start() {
+        //startSong.play();
+    }
+
+    public void berekening() {
+        invoer = (Integer.parseInt(tekstvak.getText()));
+        if (invoer >= 1 && invoer <= 3) {
+            beurten = true;
+            stenen -= invoer;
+        } else if (3 < invoer || invoer > 5 || invoer < 0) {
+            error();
+        }
+    }
+
+    public void computerAI() {
+        if (stenen > 0) {
+            computerAantal = 0;
+            if (stenen % 4 == 3) {
+                computerAantal += 2;
+            }
+            if (stenen % 4 == 2) {
+                computerAantal += 1;
+            }
+            if (stenen % 4 == 1) {
+                computerAantal = (int) (Math.random() * 3 + 1);
+            }
+            if (stenen % 4 == 0) {
+                computerAantal += 3;
+            }
+            // hier is de uitwerking van de AI (ctrl + .)
+            stenen = stenen - computerAantal;
+            beurten = false;
+        }
+    }
+
+    public void textfield() {
+        tekstvak = new TextField(8);
+        add(tekstvak);
+        Listen aa = new Listen();
+        tekstvak.addActionListener(aa);
     }
 
     public void paint(Graphics g) {
@@ -58,7 +99,6 @@ public class Praktijkopdracht_h14 extends Applet {
         if (stenen <= 0) {
             resetTekst = "";
             tekstvak.setText("");
-
         } else if (stenen >= 0) {
             resetTekst = "Aantal stenen: " + stenen;
         }
@@ -69,7 +109,6 @@ public class Praktijkopdracht_h14 extends Applet {
 
         if (stenen >= 23) {
             g.drawString("Jij mag beginnen. Good luck!", x, 400);
-
         } else if (stenen <= 0) {
             g.drawString("Het spel is afgelopen!", x, 400);
         } else {
@@ -83,13 +122,10 @@ public class Praktijkopdracht_h14 extends Applet {
             int y = 75;
 
             for (int i = 1; i <= stenen; i++) {
-
                 if (stenen == 1 || stenen == 5 || stenen == 9 || stenen == 13 || stenen == 17 || stenen == 21) {
                     g.drawImage(smileyWin, x, y, 50, 50, this);
-
                 } else {
                     g.drawImage(smileyLose, x, y, 50, 50, this);
-
                 }
                 x += 75;
                 if (i % 4 == 0) {
@@ -101,6 +137,8 @@ public class Praktijkopdracht_h14 extends Applet {
 
         if (stenen <= 0) {
             winUitkomst();
+            //startSong.stop();
+            einde = true;
         }
         if (error == true) {
             error();
@@ -108,60 +146,6 @@ public class Praktijkopdracht_h14 extends Applet {
         }
     }
 
-    public void computerAI() {
-        if (stenen >= 1) {
-            switch (stenen) {
-                case 1:
-                case 2:
-                case 9:
-                case 15:
-                case 17:
-                case 18:
-                case 22:
-                    computerAantal = 1;
-                    break;
-                case 3:
-                case 6:
-                case 8:
-                case 10:
-                case 12:
-                case 14:
-                case 16:
-                case 19:
-                    computerAantal = 2;
-                    break;
-                case 4:
-                case 7:
-                case 11:
-                case 13:
-                case 20:
-                    computerAantal = 3;
-                    break;
-                default:
-                    computerAantal = (int) (Math.random() * 3 + 1);
-                    break;
-            } // hier is de uitwerking van de AI
-            stenen = stenen - computerAantal;
-            beurten = false;
-        }
-    }
-
-    public void textfield() {
-        tekstvak = new TextField(8);
-        add(tekstvak);
-        Listen aa = new Listen();
-        tekstvak.addActionListener(aa);
-    }
-
-    public void berekening() {
-        invoer = (Integer.parseInt(tekstvak.getText()));
-        if (invoer >= 1 && invoer <= 3) {
-            stenen -= invoer;
-            beurten = true;
-        } else if (3 < invoer || invoer > 5 || invoer < 0) {
-            error();
-        }
-    }
 
     public void error() {
         if (invoer > 3 || invoer < 1) {
@@ -171,7 +155,7 @@ public class Praktijkopdracht_h14 extends Applet {
     }
 
     public void winUitkomst() {
-        if (!beurten) {
+        if (beurten == false) {
             gewonnen();
             einde = true;
         } else {
@@ -183,22 +167,12 @@ public class Praktijkopdracht_h14 extends Applet {
     public void gewonnen() {
         getGraphics().drawString("U heeft gewonnen", 300, 350);
         getGraphics().drawImage(aiLose, 150, 100, 200, 200, this);
-        if (stenen >= 22) {
-            tekstvak.setVisible(true);
-        } else {
-            tekstvak.setVisible(false);
-        }
         victory.play();
     }
 
     public void verloren() {
         getGraphics().drawString("U heeft verloren", 300, 350);
         getGraphics().drawImage(playerLose, 150, 100, 200, 200, this);
-        if (stenen >= 22) {
-            tekstvak.setVisible(true);
-        } else {
-            tekstvak.setVisible(false);
-        }
         sound.play();
         //loseMusic.play();
     }
@@ -225,6 +199,7 @@ public class Praktijkopdracht_h14 extends Applet {
             computerAantal = 0;
             stenen = 23;
             tekstvak.requestFocus();
+            //startSong.play();
             repaint();
         }
     }
